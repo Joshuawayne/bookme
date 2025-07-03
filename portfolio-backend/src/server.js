@@ -48,11 +48,10 @@ const PORT = process.env.PORT || 3000;
 
 
 // --- 5. Configure Global Middleware ---
-// Note: A more specific CORS configuration is better for production.
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173', // Use a variable for the frontend URL
+  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
 }));
-app.use(express.json()); // Enable the server to parse JSON in request bodies
+app.use(express.json());
 
 
 // --- 6. Mount API Routes ---
