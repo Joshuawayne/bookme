@@ -1,5 +1,7 @@
-// portfolio-backend/src/services/chatLogService.js
-const supabase = require('../config/supabase');
+// ** THE FIX IS HERE **
+// We are now importing the single, correctly configured Supabase client
+// from its one true source: supabaseService.js, which lives in the same directory.
+const supabase = require('./supabaseService');
 
 /**
  * @module chatLogService

@@ -129,8 +129,10 @@ const handleSubmit = async () => {
     });
 
     if (!response.ok) {
-      // If the server responds with an error status (e.g., 400, 500)
-      throw new Error('An error occurred on the server.');
+      // Get detailed error information from the server
+      const errorData = await response.json().catch(() => ({}));
+      const errorMessage = errorData.message || errorData.error || 'An error occurred on the server';
+      throw new Error(errorMessage);
     }
 
     // Handle success
@@ -138,9 +140,22 @@ const handleSubmit = async () => {
     submissionError.value = false;
 
   } catch (error) {
-    // Handle network errors or server errors
-    console.error('Submission failed:', error);
-    submissionMessage.value = "Submission failed. Please try again or contact me directly.";
+    // Handle network errors or server errors with more detail
+    console.error('Submission failed:', {
+      message: error.message,
+      response: error.response,
+      request: error.request
+    });
+    
+    // Show more specific error messages to the user
+    if (error.message.includes('RLS Policy Violation')) {
+      submissionMessage.value = "Access denied. Please contact the administrator for assistance.";
+    } else if (error.message.includes('Database Error')) {
+      submissionMessage.value = "Database error occurred. Please try again later.";
+    } else {
+      submissionMessage.value = error.message || "An unexpected error occurred. Please try again.";
+    }
+    
     submissionError.value = true;
   } finally {
     // Reset the submitting state regardless of outcome
