@@ -1,0 +1,53 @@
+/* 1. Import our Neoclassical font pairing */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+/* 2. Define our "Digital Enlightenment" design system */
+:root {
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', serif;
+  --color-background: #F8F4E9;      /* Parchment */
+  --color-stone-gray: #ECEAE3;    /* NEW: Cooler gray for gallery */
+  --color-text: #2C2726;           /* Ink */
+  --color-primary: #B3402A;         /* Terracotta Red */
+  --color-muted: #9E988D;           /* Muted Gray */
+  --color-accent: #C4A464;         /* Gilded Gold */
+
+}
+
+/* 3. Global layout and typography */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4. Typographic Hierarchy */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2rem 0;
+  color: var(--color-text);
+}
+h1 { font-size: 4rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+p { margin-bottom: 1.5rem; }
+a { color: var(--color-primary); font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; transition: opacity 0.4s ease; }
+a:hover { opacity: 0.6; }
+/* Add this new rule to src/assets/styles/main.css */
+/* This will be our reusable content wrapper */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4rem; /* The "inner gutter" you're looking for */
+  width: 100%;
+  box-sizing: border-box;
+}
