@@ -7,7 +7,7 @@
         <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
       </div>
       <div class="footer-bottom">
-        <span class="logo-text">Your Name</span>
+        <span class="logo-text">Joshua Mercy</span>
         <span>© {{ new Date().getFullYear() }}</span>
       </div>
     </div>
