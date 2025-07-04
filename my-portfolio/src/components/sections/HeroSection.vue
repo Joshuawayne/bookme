@@ -12,10 +12,26 @@
         <!-- Column 2: The Text Content -->
         <div class="text-column">
           <h1 class="hero-title">
-            Devotion to the craft of building beautiful and efficient digital experiences.
+            <DecryptedText
+              text="Devotion to the craft of building beautiful and efficient digital experiences."
+              :speed="100"
+              :maxIterations="20"
+              revealDirection="center"
+              animateOn="view"
+              className="revealed"
+              encryptedClassName="encrypted"
+            />
           </h1>
           <p class="hero-intro">
-            Drawing from the principles of structured efficiency and classical harmony, I approach web development as an act of architecture—creating solutions that are not only functional, but enduring.
+            <DecryptedText
+              text="Drawing from the principles of structured efficiency and classical harmony, I approach web development as an act of architecture—creating solutions that are not only functional, but enduring."
+              :speed="120"
+              :maxIterations="25"
+              revealDirection="start"
+              animateOn="view"
+              className="revealed"
+              encryptedClassName="encrypted"
+            />
           </p>
         </div>
 
@@ -25,8 +41,9 @@
 </template>
 
 <script setup>
-// Import our new, self-contained animation component
+// Import our new, self-contained animation components
 import ClothAnimation from '@/components/ui/ClothAnimation.vue';
+import DecryptedText from '@/components/ui/DecryptedText.vue';
 </script>
 
 <style scoped>
@@ -80,12 +97,24 @@ import ClothAnimation from '@/components/ui/ClothAnimation.vue';
   margin: 0;
 }
 
+.hero-title .decrypted-char {
+  font-size: clamp(2.5rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+}
+
 .hero-intro {
   font-size: 1.25rem;
   line-height: 1.8;
   max-width: 35em; /* A bit narrower for the column layout */
   margin: 2.5rem 0 0 0; /* Align to the left, no auto margin */
   opacity: 0.8;
+}
+
+.hero-intro .decrypted-char {
+  font-size: 1.25rem;
+  line-height: 1.8;
 }
 
 /* Responsive adjustments for tablets and mobile */
