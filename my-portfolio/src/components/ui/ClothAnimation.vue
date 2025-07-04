@@ -123,11 +123,37 @@ onMounted(() => {
 
   const mouseDown = (e) => { mouse.button = e.which; mouse.down = true; setMouse(e); };
   const mouseUp = () => (mouse.down = false);
-  const mouseMove = (e) => { if(mouse.down) setMouse(e); };
+  const mouseMove = (e) => { if (mouse.down) setMouse(e); };
 
-  canvas.addEventListener('mousedown', mouseDown);
-  canvas.addEventListener('mouseup', mouseUp);
-  canvas.addEventListener('mousemove', mouseMove);
+  // touch support for mobile
+  const touchStart = (e) => {
+    mouse.button = 1;
+    mouse.down = true;
+    const touch = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = touch.clientX - rect.left;
+    mouse.y = touch.clientY - rect.top;
+    mouse.px = mouse.x;
+    mouse.py = mouse.y;
+  };
+  const touchEnd = () => (mouse.down = false);
+  const touchMove = (e) => {
+    if (mouse.down && e.touches.length > 0) {
+      const touch = e.touches[0];
+      const rect = canvas.getBoundingClientRect();
+      mouse.px = mouse.x;
+      mouse.py = mouse.y;
+      mouse.x = touch.clientX - rect.left;
+      mouse.y = touch.clientY - rect.top;
+    }
+  };
+
+  canvas.addEventListener('mousedown',  mouseDown);
+  canvas.addEventListener('mouseup',    mouseUp);
+  canvas.addEventListener('mousemove',  mouseMove);
+  canvas.addEventListener('touchstart', touchStart);
+  canvas.addEventListener('touchend',   touchEnd);
+  canvas.addEventListener('touchmove',  touchMove);
   canvas.addEventListener('contextmenu', (e) => e.preventDefault());
 
   let cloth = new Cloth();
