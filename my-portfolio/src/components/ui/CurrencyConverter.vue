@@ -47,7 +47,7 @@ const error = ref(null);
 onMounted(async () => {
   try {
     // We call our own backend server, which acts as a proxy.
-    const response = await fetch('http://localhost:3000/api/rates');
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rates`);
     if (!response.ok) {
       throw new Error('Failed to fetch rates from our server.');
     }
