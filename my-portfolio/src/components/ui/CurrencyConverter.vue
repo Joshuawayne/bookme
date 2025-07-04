@@ -46,17 +46,22 @@ const error = ref(null);
 // onMounted is a Vue lifecycle hook that runs once the component is added to the page.
 onMounted(async () => {
   try {
-    // We call our own backend server, which acts as a proxy.
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/rates`);
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    console.log('VITE_API_URL:', import.meta.env.VITE_API_URL);
+    const url = `${apiUrl}/api/rates`;
+    console.log('Fetching from:', url);
+    const response = await fetch(url);
+    console.log('Response status:', response.status, response.statusText);
+    const text = await response.text();
+    console.log('Raw response:', text);
     if (!response.ok) {
-      throw new Error('Failed to fetch rates from our server.');
+      throw new Error(`Failed to fetch rates: ${response.status} ${response.statusText}`);
     }
-    
-    const data = await response.json();
+    const data = JSON.parse(text);
     rates.value = data.rates;
   } catch (e) {
-    error.value = 'Could not load currency data.';
-    console.error(e);
+    error.value = `Could not load currency data: ${e.message}`;
+    console.error('Fetch error:', e);
   } finally {
     isLoading.value = false;
   }
