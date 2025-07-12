@@ -38,5 +38,22 @@ const closeNav = () => {
 </script>
 
 <style>
-/* No styles needed here as each section manages its own layout */
+/* 
+  These styles apply globally to your main content area, solving the 
+  layout overlap with the fixed header.
+*/
+main {
+ 
+  padding-top: 50px;
+
+  /* 
+    ALIGNMENT: These match the horizontal padding of your header (padding: 0 4rem) 
+    to ensure the content on the page aligns perfectly with the header content.
+  */
+  padding-left: 4rem;
+  padding-right: 4rem;
+
+  /* Optional but recommended: add some space at the bottom of the page */
+  padding-bottom: 4rem;
+}
 </style>
