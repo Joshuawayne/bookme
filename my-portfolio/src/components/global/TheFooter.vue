@@ -2,9 +2,9 @@
   <footer class="site-footer">
     <div class="container">
       <div class="social-links">
-        <a href="#" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="#" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://github.com/Joshuawayne" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/joshua-mercy-4284b3249/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/yasukedebtera" target="_blank" rel="noopener noreferrer">Twitter</a>
       </div>
       <div class="footer-bottom">
         <span class="logo-text">Joshua Mercy</span>
