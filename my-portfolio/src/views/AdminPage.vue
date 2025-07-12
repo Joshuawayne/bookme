@@ -30,10 +30,15 @@
     <div class="main-grid">
       <section class="chart-container">
         <h3>Leads by Service Type</h3>
-        <!-- THE FIX: This component will now only be created when there is data -->
-        <Doughnut v-if="proposals && proposals.length > 0" :data="chartData" :options="chartOptions" />
-        <div v-else-if="isLoading" class="loading-state-small">Loading Chart...</div>
-        <div v-else class="empty-state">No data to display chart.</div>
+        <div class="chart-wrapper">
+          <div v-if="chartError" class="error-state">
+            <p><strong>Could not load chart.</strong></p>
+            <p>{{ chartError }}</p>
+          </div>
+          <Doughnut v-else-if="proposals && proposals.length > 0" :data="chartData" :options="chartOptions" />
+          <div v-else-if="isLoading" class="loading-state-small">Loading Chart...</div>
+          <div v-else class="empty-state">No data to display chart.</div>
+        </div>
       </section>
 
       <section class="table-container">
@@ -68,7 +73,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, onErrorCaptured } from 'vue';
 import { useRouter } from 'vue-router';
 import { supabase } from '@/services/supabase';
 
@@ -78,10 +83,16 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from 'chart.js';
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 const router = useRouter();
-const proposals = ref(null); // <-- FIX: Initialize as null
+const proposals = ref(null);
 const isLoading = ref(true);
+const chartError = ref(null);
 
-// --- Computed Properties for BI ---
+onErrorCaptured((err) => {
+  console.error("A rendering error occurred in a child component:", err.message);
+  chartError.value = "An unexpected error occurred while rendering the chart. This could be due to invalid data or a library issue.";
+  return false;
+});
+
 const totalProposals = computed(() => proposals.value?.length || 0);
 
 const proposalClusters = computed(() => {
@@ -104,7 +115,6 @@ const newLeadsCount = computed(() => {
   return proposals.value.filter(p => p.status === 'new').length;
 });
 
-// --- Chart.js Data and Options ---
 const chartData = computed(() => ({
   labels: Object.keys(proposalClusters.value),
   datasets: [{
@@ -120,9 +130,9 @@ const chartOptions = ref({
   plugins: { legend: { position: 'right' }, title: { display: false } },
 });
 
-// --- Data Fetching and Actions ---
 const fetchProposals = async () => {
   isLoading.value = true;
+  chartError.value = null;
   try {
     const { data, error } = await supabase
       .from('proposals')
@@ -172,7 +182,18 @@ onMounted(() => {
 .admin-dashboard-content {
   width: 100%;
 }
-.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+
+/* --- START: HEADER LAYOUT FIX --- */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allows buttons to wrap below title on very small screens */
+  gap: 1.5rem;      /* Creates space between title and buttons, especially when wrapped */
+  margin-bottom: 2rem;
+}
+/* --- END: HEADER LAYOUT FIX --- */
+
 h1 { margin: 0; font-size: 2.5rem; }
 .header-actions { display: flex; gap: 1rem; }
 button, .action-button { background-color: var(--color-text); color: var(--color-background); font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.1em; border: none; padding: 0.75rem 1.5rem; cursor: pointer; font-size: 0.9rem; transition: background-color 0.3s ease; border-radius: 4px; }
@@ -190,6 +211,10 @@ button:disabled { background-color: var(--color-muted); cursor: not-allowed; opa
 .chart-container, .table-container { background-color: #fff; padding: 2rem; border: 1px solid #e0e0e0; border-radius: 4px; }
 h3 { margin-top: 0; font-size: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem; margin-bottom: 1.5rem; }
 
+.chart-wrapper { position: relative; height: 400px; width: 100%; display: flex; justify-content: center; align-items: center; }
+.error-state { text-align: center; padding: 2rem; border: 1px dashed red; background-color: #fff5f5; color: #c53030; border-radius: 4px; }
+.error-state p { margin: 0.5rem 0; }
+
 .proposals-table-wrapper { width: 100%; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th, td { padding: 1rem; border-bottom: 1px solid #e0e0e0; text-align: left; vertical-align: middle; }
@@ -201,5 +226,6 @@ td { font-size: 0.95rem; }
 .loading-state-small { padding: 6rem 4rem; }
 
 @media (max-width: 1200px) { .main-grid { grid-template-columns: 1fr; } }
-@media (max-width: 768px) { .dashboard-header { flex-direction: column; gap: 1rem; align-items: flex-start; } }
+/* The problematic media query that forced the header into a column has been removed. */
+/* @media (max-width: 768px) { .dashboard-header { flex-direction: column; ... } } */
 </style>
