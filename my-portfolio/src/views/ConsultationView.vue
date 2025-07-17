@@ -40,7 +40,7 @@
           <div class="calendly-widget-container">
             <div 
               class="calendly-inline-widget" 
-              data-url="https://calendly.com/mercyjoshu0/30min" 
+              data-url="https://calendly.com/mercyjoshu0/free-website-consultation" 
               style="min-width: 320px; height: 700px;"
             ></div>
           </div>
