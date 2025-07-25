@@ -67,10 +67,10 @@ const projectTypes = [
   { id: 'webapp', label: 'Custom Web App', cost: 40000 },
 ];
 const coreFeatures = [
-  { id: 'cms', label: 'CMS / Blog', cost: 40000 },
-  { id: 'auth', label: 'User Accounts', cost: 60000 },
-  { id: 'animation', label: 'Advanced Animations', cost: 50000 },
-  { id: 'api', label: '3rd Party API Int.', cost: 45000 },
+  { id: 'cms', label: 'CMS / Blog', cost: 30000 },
+  { id: 'auth', label: 'User Accounts', cost: 50000 },
+  { id: 'animation', label: 'Advanced Animations', cost: 20000 },
+  { id: 'api', label: '3rd Party API Int.', cost: 25000 },
 ];
 
 // --- STATE (remains the same) ---
