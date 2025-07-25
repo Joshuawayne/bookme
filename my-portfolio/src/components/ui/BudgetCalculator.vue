@@ -64,7 +64,7 @@ import { ref, computed } from 'vue';
 const projectTypes = [
   { id: 'website', label: 'Standard Website', cost: 30000 },
   { id: 'ecommerce', label: 'E-commerce Store', cost: 80000 },
-  { id: 'webapp', label: 'Custom Web App', cost: 400000 },
+  { id: 'webapp', label: 'Custom Web App', cost: 40000 },
 ];
 const coreFeatures = [
   { id: 'cms', label: 'CMS / Blog', cost: 40000 },
