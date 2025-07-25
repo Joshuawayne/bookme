@@ -15,7 +15,7 @@
         <div class="contact-card">
           <h3 class="card-title">Direct Inquiry</h3>
           <p class="card-description">For general inquiries, collaborations, or direct communication, please feel free to send me an email.</p>
-          <a href="mailto:mercyjoshu0@gmail.com" class="card-link">mercyjoshu0@gmail.com</a>
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mercyjoshu0@gmail.com" target="_blank">mercyjoshu0@gmail.com</a>
         </div>
 
         <!-- ======================================================= -->
