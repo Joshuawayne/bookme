@@ -12,7 +12,7 @@
         <!-- Card 1: Website -->
         <div class="package-card">
           <h3>Essential Website</h3>
-          <p class="price">Starting at <strong>75,000 KES</strong></p>
+          <p class="price">Starting at <strong>30,000 KES</strong></p>
           <ul>
             <li>Up to 5 Pages</li>
             <li>Responsive Design</li>
@@ -24,7 +24,7 @@
         <!-- Card 2: E-commerce -->
         <div class="package-card">
           <h3>E-Commerce Platform</h3>
-          <p class="price">Starting at <strong>200,000 KES</strong></p>
+          <p class="price">Starting at <strong>50,000 KES</strong></p>
           <ul>
             <li>Full Store Setup</li>
             <li>Payment Gateway Integration</li>
@@ -36,7 +36,7 @@
         <!-- Card 3: IT Support -->
         <div class="package-card">
           <h3>IT Support Retainer</h3>
-          <p class="price">From <strong>30,000 KES</strong> / mo</p>
+          <p class="price">From <strong>15,000 KES</strong> / mo</p>
           <ul>
             <li>System Monitoring</li>
             <li>On-call Technical Support</li>
