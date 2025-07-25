@@ -8,7 +8,7 @@
     <div v-if="rates" class="converter-ui">
       <div class="form-group">
         <label for="kes-amount">Amount (KES)</label>
-        <input type="number" id="kes-amount" v-model.number="kesAmount" placeholder="e.g., 100000" />
+        <input type="number" id="kes-amount" v-model.number="kesAmount" placeholder="e.g., 1000" />
       </div>
 
       <div class="form-group">
