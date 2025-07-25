@@ -12,7 +12,7 @@
         <p class="card-description">{{ subtitle }}</p>
         <!-- Tags can be made dynamic later -->
         <div class="card-tags">
-          <span class="tag">Vue.js</span>
+          <span class="tag">view</span>
         </div>
       </div>
     </div>
