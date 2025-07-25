@@ -36,7 +36,7 @@ import { ref, onMounted, computed } from 'vue';
 
 // --- STATE ---
 // Reactive variables to hold the component's state.
-const kesAmount = ref(1);
+const kesAmount = ref(129.20);
 const targetCurrency = ref('USD');
 const rates = ref(null); // Will store the fetched rates object { KES: ..., EUR: ... }
 const isLoading = ref(true);
