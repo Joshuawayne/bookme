@@ -36,7 +36,7 @@
         <!-- Card 3: IT Support -->
         <div class="package-card">
           <h3>IT Support Retainer</h3>
-          <p class="price">From <strong>15,000 KES</strong> / mo</p>
+          <p class="price">From <strong>30,000 KES</strong> / mo</p>
           <ul>
             <li>System Monitoring</li>
             <li>On-call Technical Support</li>
