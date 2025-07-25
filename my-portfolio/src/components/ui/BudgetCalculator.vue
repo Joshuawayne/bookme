@@ -62,9 +62,9 @@ import { ref, computed } from 'vue';
 
 // --- DATA STRUCTURE (remains the same) ---
 const projectTypes = [
-  { id: 'website', label: 'Standard Website', cost: 50000 },
-  { id: 'ecommerce', label: 'E-commerce Store', cost: 150000 },
-  { id: 'webapp', label: 'Custom Web App', cost: 300000 },
+  { id: 'website', label: 'Standard Website', cost: 30000 },
+  { id: 'ecommerce', label: 'E-commerce Store', cost: 80000 },
+  { id: 'webapp', label: 'Custom Web App', cost: 400000 },
 ];
 const coreFeatures = [
   { id: 'cms', label: 'CMS / Blog', cost: 40000 },
